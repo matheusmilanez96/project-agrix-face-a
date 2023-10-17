@@ -1,6 +1,6 @@
 package com.betrybe.agrix.controllers;
 
-import com.betrybe.agrix.controllers.dto.FarmDTO;
+import com.betrybe.agrix.controllers.dto.FarmDto;
 import com.betrybe.agrix.models.entities.Farm;
 import com.betrybe.agrix.services.FarmService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +27,9 @@ public class FarmController {
   }
 
   @PostMapping()
-  public ResponseEntity<Farm> createFarm(@RequestBody FarmDTO farmDTO) {
-    Farm newFarm = farmService.insertFarm(farmDTO.toFarm());
-    return ResponseEntity.status(HttpStatus.CREATED).body(newFarm)
+  public ResponseEntity<Farm> createFarm(@RequestBody FarmDto farmDto) {
+    Farm newFarm = farmService.insertFarm(farmDto.toFarm());
+    return ResponseEntity.status(HttpStatus.CREATED).body(newFarm);
   }
 
 }

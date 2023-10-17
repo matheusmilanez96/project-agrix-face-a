@@ -20,9 +20,12 @@ public class Farm {
 
   private Double size;
 
-  public Book() {}
+  public Farm() {}
 
-  public Book(Long id, String name, Double size) {
+  /**
+   * Construtor de Book.
+   */
+  public Farm(Long id, String name, Double size) {
     this.id = id;
     this.name = name;
     this.size = size;
