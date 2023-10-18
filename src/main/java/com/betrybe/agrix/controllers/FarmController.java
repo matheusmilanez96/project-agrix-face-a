@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/farms")
 public class FarmController {
-
   private final FarmService farmService;
 
   @Autowired
