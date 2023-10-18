@@ -1,8 +1,6 @@
 package com.betrybe.agrix.services;
 
-import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Farm;
-import com.betrybe.agrix.models.repositories.CropRepository;
 import com.betrybe.agrix.models.repositories.FarmRepository;
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +15,9 @@ public class FarmService {
 
   private final FarmRepository farmRepository;
 
-  private final CropRepository cropRepository;
-
   @Autowired
-  public FarmService(FarmRepository farmRepository, CropRepository cropRepository) {
+  public FarmService(FarmRepository farmRepository) {
     this.farmRepository = farmRepository;
-    this.cropRepository = cropRepository;
   }
 
   public Farm insertFarm(Farm farm) {
@@ -36,18 +31,5 @@ public class FarmService {
 
   public List<Farm> getAllFarms() {
     return farmRepository.findAll();
-  }
-
-  /**
-   * Método insertCrop.
-   */
-  public Optional<Crop> insertCrop(Crop crop, Long farmId) {
-    Optional<Farm> optionalFarm = farmRepository.findById(farmId);
-    if (optionalFarm.isEmpty()) {
-      return Optional.empty();
-    }
-
-    Crop newCrop = cropRepository.save(crop);
-    return Optional.of(newCrop);
   }
 }

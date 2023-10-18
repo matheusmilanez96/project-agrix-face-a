@@ -23,7 +23,7 @@ public class Farm {
   public Farm() {}
 
   /**
-   * Construtor de Farm.
+   * Construtor de Book.
    */
   public Farm(Long id, String name, Double size) {
     this.id = id;
