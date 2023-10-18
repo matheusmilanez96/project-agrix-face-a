@@ -17,7 +17,6 @@ import jakarta.persistence.Transient;
 @Entity
 @Table(name = "crops")
 public class Crop {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
