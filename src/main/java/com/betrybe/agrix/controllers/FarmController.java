@@ -108,7 +108,9 @@ public class FarmController {
   @GetMapping("/crops")
   public List<?> getAllCrops() {
     List<Crop> allCrops = farmService.getAllCrops();
-    return allCrops;
+    return allCrops.stream()
+        .map((crop) -> new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(), crop.getFarm().getId()))
+        .collect(Collectors.toList());
   }
 
   /**
