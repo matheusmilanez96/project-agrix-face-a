@@ -87,6 +87,25 @@ public class FarmController {
   /**
    * Método getCropById.
    */
+  @GetMapping("/crops/{id}")
+  public ResponseEntity<?> getCropById(@PathVariable Long id) {
+    Optional<Crop> optionalCrop = farmService.getCropById(id);
+
+    if (optionalCrop.isEmpty()) {
+      String message = "Plantação não encontrada!";
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
+    Crop crop = optionalCrop.get();
+
+    CropCreationDto responseCrop = new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
+        crop.getFarm().getId());
+
+    return ResponseEntity.ok(responseCrop);
+  }
+
+  /**
+   * Método getCropById.
+   */
   @GetMapping("/farms/{farmId}/crops")
   public ResponseEntity<?> getCropsById(@PathVariable Long farmId) {
     Optional<Farm> optionalFarm = farmService.getFarmById(farmId);
@@ -107,9 +126,9 @@ public class FarmController {
     return ResponseEntity.ok(allCrops);
   }
 
-  /**
-   * Método getAllCrops.
-   */
+    /**
+     * Método getAllCrops.
+     */
   @GetMapping("/crops")
   public List<?> getAllCrops() {
     List<Crop> allCrops = farmService.getAllCrops();

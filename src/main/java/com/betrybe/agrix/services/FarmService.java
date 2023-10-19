@@ -33,6 +33,10 @@ public class FarmService {
     return farmRepository.findById(id);
   }
 
+  public Optional<Crop> getCropById(Long id) {
+    return cropRepository.findById(id);
+  }
+
   public List<Crop> getAllCrops() {
     return cropRepository.findAll();
   }
