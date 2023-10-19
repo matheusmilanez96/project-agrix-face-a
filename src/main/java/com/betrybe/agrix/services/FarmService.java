@@ -44,4 +44,12 @@ public class FarmService {
   public Crop insertCrop(Crop crop) {
     return cropRepository.save(crop);
   }
+
+  public List<Crop> getCropsById(Farm farm) {
+    List<Crop> allCrops = farm.getCrops();
+    String name = farm.getName();
+    Long farmId = farm.getId();
+//    List<Crop> crops = cropRepository.findByFarmId(farmId);
+    return allCrops;
+  }
 }

@@ -80,6 +80,24 @@ public class FarmController {
   }
 
   /**
+   * Método getCropById.
+   */
+  @GetMapping("/{farmId}/crops")
+  public ResponseEntity<?> getCropsById(@PathVariable Long farmId) {
+    Optional<Farm> optionalFarm = farmService.getFarmById(farmId);
+
+    if (optionalFarm.isEmpty()) {
+      String message = "Fazenda não encontrada!";
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
+
+    List<Crop> crops = farmService.getCropsById(optionalFarm.get());
+    crops.forEach(crop -> crop.setFarm(optionalFarm.get()));
+
+    return ResponseEntity.ok(crops);
+  }
+
+  /**
    * Método getAllFarms.
    */
   @GetMapping
