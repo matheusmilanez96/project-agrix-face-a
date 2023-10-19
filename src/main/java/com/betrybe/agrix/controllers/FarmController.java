@@ -97,8 +97,8 @@ public class FarmController {
     }
     Crop crop = optionalCrop.get();
 
-    CropCreationDto responseCrop = new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
-        crop.getFarm().getId());
+    CropCreationDto responseCrop = new CropCreationDto(crop.getId(), crop.getName(),
+        crop.getPlantedArea(), crop.getFarm().getId());
 
     return ResponseEntity.ok(responseCrop);
   }
@@ -126,9 +126,9 @@ public class FarmController {
     return ResponseEntity.ok(allCrops);
   }
 
-    /**
-     * Método getAllCrops.
-     */
+  /**
+   * Método getAllCrops.
+   */
   @GetMapping("/crops")
   public List<?> getAllCrops() {
     List<Crop> allCrops = farmService.getAllCrops();
