@@ -33,6 +33,9 @@ public class FarmService {
     return farmRepository.findById(id);
   }
 
+  public List<Crop> getAllCrops() {
+    return cropRepository.findAll();
+  }
 
   public List<Farm> getAllFarms() {
     return farmRepository.findAll();
@@ -45,11 +48,14 @@ public class FarmService {
     return cropRepository.save(crop);
   }
 
+  /**
+   * Método getCropsById.
+   */
   public List<Crop> getCropsById(Farm farm) {
     List<Crop> allCrops = farm.getCrops();
     String name = farm.getName();
     Long farmId = farm.getId();
-//    List<Crop> crops = cropRepository.findByFarmId(farmId);
+    //List<Crop> crops = cropRepository.findByFarmId(farmId);
     return allCrops;
   }
 }

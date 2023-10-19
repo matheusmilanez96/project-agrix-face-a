@@ -27,7 +27,7 @@ public class Crop {
   private Double plantedArea;
 
   @ManyToOne()
-  @JoinColumn(name = "farm_id")
+  @JoinColumn(name = "farm_id", referencedColumnName = "id")
   private Farm farm;
 
   public Crop() {
@@ -36,11 +36,10 @@ public class Crop {
   /**
    * Construtor para Crop.
    */
-  public Crop(Long id, String name, Double plantedArea, Farm farm) {
+  public Crop(Long id, String name, Double plantedArea) {
     this.id = id;
     this.name = name;
     this.plantedArea = plantedArea;
-    this.farm = farm;
   }
 
   public Long getId() {

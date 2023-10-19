@@ -6,8 +6,8 @@ import com.betrybe.agrix.models.entities.Farm;
 /**
  * CropDto.
  */
-public record CropDto(Long id, String name, Double plantedArea, Farm farm) {
+public record CropDto(Long id, String name, Double plantedArea) {
   public Crop toCrop() {
-    return new Crop(id, name, plantedArea, farm);
+    return new Crop(id, name, plantedArea);
   }
 }
