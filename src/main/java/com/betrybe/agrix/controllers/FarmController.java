@@ -99,7 +99,12 @@ public class FarmController {
     List<Crop> crops = farmService.getCropsById(optionalFarm.get());
     crops.forEach(crop -> crop.setFarm(optionalFarm.get()));
 
-    return ResponseEntity.ok(crops);
+    List<CropCreationDto> allCrops = crops.stream()
+        .map((crop) -> new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
+            crop.getFarm().getId()))
+        .toList();
+
+    return ResponseEntity.ok(allCrops);
   }
 
   /**
@@ -109,7 +114,8 @@ public class FarmController {
   public List<?> getAllCrops() {
     List<Crop> allCrops = farmService.getAllCrops();
     return allCrops.stream()
-        .map((crop) -> new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(), crop.getFarm().getId()))
+        .map((crop) -> new CropCreationDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
+            crop.getFarm().getId()))
         .collect(Collectors.toList());
   }
 
